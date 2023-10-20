@@ -1,0 +1,76 @@
+DDL Commands
+CREATE:
+CREATE TABLE EMPLOYEE(empno integer, empname varchar(15), job varchar(15), deptno integer, salary integer);
+CREATE TABLE DEPARTMENT(deptid integer, deptno integer, job varchar(15));
+DROP:
+DROP TABLE DEPARTMENT;
+ALTER:
+ALTER TABLE EMPLOYEE ADD COLUMN (mobileno integer);
+ALTER TABLE EMPLOYEE MODIFY COLUMN empno varchar(15);
+ALTER TABLE EMPLOYEE DROP COLUMN mobileno;
+TRUNCATE:
+TRUNCATE TABLE EMPLOYEE;
+RENAME:
+RENAME TABLE EMPLOYEE TO EMP;
+ALTER TABLE EMP RENAME TO EMPLOYEE;
+
+DML Commands
+INSERT:
+INSERT INTO EMPLOYEE (empno, empname, job, deptno, salary) VALUES (‘e01’, ‘joe’, ‘developer’, 102, 15000);
+INSERT INTO EMPLOYEE (empno, empname, salary) VALUES (‘e01’, ‘joe’, 15000);
+INSERT INTO EMP1 (SELECT * FROM EMPLOYEE);
+UPDATE:
+UPDATE EMPLOYEE SET empno = ‘e1’, empname = ‘john’;
+DELETE:
+DELETE FROM EMPLOYEE WHERE job = ‘developer’;
+
+DCL Commands
+Create user
+CREATE USER manu@localhost IDENTIFIED BY ‘manu’;
+Check privileges
+SHOW GRANTS FOR manu@localhost;
+GRANT:
+GRANT ALL ON mydb.* TO manu@localhost;
+REVOKE:
+REVOKE UPDATE, DELETE ON mydb.* FROM manu@localhost;
+REVOKE ALL ON mydb.* FROM manu@localhost;
+
+TCL Commands
+COMMIT:
+To check whether autocommit is enabled or not
+SELECT @@autocommit;
+By default autocommit will be on
+Insert Values
+INSERT INTO EMPLOYEE VALUES(‘e5’, ‘raj’, ‘Programmer’, 103, 16000);
+To disable autocommit
+SET autocommit=0;
+ROLLBACK:
+delete from EMPLOYEE WHERE empno=’e5';
+ROLLBACK;
+SAVEPOINT:
+UPDATE EMPLOYEE SET empname = ‘john’ WHERE empno=’e5';
+SAVEPOINT A;
+
+DQL Commands:
+SELECT:
+SELECT * FROM EMPLOYEE;
+SELECT empno, empname, salary FROM EMPLOYEE;
+SELECT DISTINCT * FROM EMPLOYEE;
+SELECT DISTINCT empno, empname FROM EMPLOYEE;
+SELECT * FROM EMPLOYEE WHERE empno=’e4';
+SELECT * FROM EMPLOYEE ORDER BY empname;
+SELECT * FROM EMPLOYEE LIMIT 3;
+SELECT * FROM EMPLOYEE WHERE empname LIKE ‘j%’;
+SELECT * FROM EMPLOYEE WHERE empname LIKE ‘%o%’;
+SELECT * FROM EMPLOYEE WHERE empname LIKE ‘%e’;
+
+Note:
+In MYSQL
+Creating database:
+CREATE database mydb;
+Viewing all databases:
+Show databases;
+Using a database:
+Use mydb;
+View all tables in database:
+Show tables;
